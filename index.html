@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle">
+            <button class="theme-btn" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="title">
+                    <i class="fas fa-clipboard-list"></i>
+                    My Tasks
+                </h1>
+                <p class="subtitle">Stay organized and productive</p>
+            </header>
+
+            <!-- Task Stats -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Total Tasks</p>
+                        <p class="stat-value" id="totalTasks">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon completed">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Completed</p>
+                        <p class="stat-value" id="completedTasks">0</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pending">
+                        <i class="fas fa-hourglass-end"></i>
+                    </div>
+                    <div class="stat-content">
+                        <p class="stat-label">Pending</p>
+                        <p class="stat-value" id="pendingTasks">0</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="taskInput" 
+                        class="task-input" 
+                        placeholder="Add a new task..."
+                        aria-label="Task input"
+                    >
+                    <input 
+                        type="date" 
+                        id="dueDateInput" 
+                        class="date-input"
+                        aria-label="Due date"
+                    >
+                    <select id="priorityInput" class="priority-input" aria-label="Task priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button id="addBtn" class="add-btn" aria-label="Add task">
+                        <i class="fas fa-plus"></i>
+                        Add
+                    </button>
+                </div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-list"></i>
+                    All
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                    <i class="fas fa-check"></i>
+                    Completed
+                </button>
+                <button class="filter-btn" data-filter="pending">
+                    <i class="fas fa-clock"></i>
+                    Pending
+                </button>
+            </div>
+
+            <!-- Tasks List -->
+            <div class="tasks-container">
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">
+                        <i class="fas fa-inbox"></i>
+                    </div>
+                    <h2>No tasks yet</h2>
+                    <p>Create your first task to get started</p>
+                </div>
+                <ul class="tasks-list" id="tasksList">
+                    <!-- Tasks will be dynamically added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Edit Task</h2>
+            <div class="modal-input-group">
+                <input 
+                    type="text" 
+                    id="editTaskInput" 
+                    class="modal-input" 
+                    placeholder="Edit task..."
+                    aria-label="Edit task"
+                >
+                <input 
+                    type="date" 
+                    id="editDueDateInput" 
+                    class="modal-input"
+                    aria-label="Edit due date"
+                >
+                <select id="editPriorityInput" class="modal-input" aria-label="Edit priority">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="modal-buttons">
+                <button class="btn-cancel" id="cancelBtn">Cancel</button>
+                <button class="btn-save" id="saveBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
